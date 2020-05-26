@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="550dp"
+        android:layout_height="250dp"
+        android:src="@drawable/iconofinal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:textColor="#FAF9F9"
+        android:gravity="center"
+        android:text="DoChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/patayya"
+        android:layout_below="@+id/logo"
+        android:textSize="70dp"/>
+
+
+
+    <Button
+        android:layout_above="@id/btn_login"
+        android:id="@+id/btn_registrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        style="@style/Widget.AppCompat.Button.Colored">
+
+    </Button>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="Iniciar sesion"
+        style="@style/Widget.AppCompat.Button.Colored">
+
+    </Button>
+
+</RelativeLayout>

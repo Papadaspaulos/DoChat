@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="193dp"
+        android:layout_height="209dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/iconofinal" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textSize="25dp"
+        android:fontFamily="@font/breeeeeeeeeeeee"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FCFCFC"
+
+        android:id="@+id/emailTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="16dp"
+        android:hint="Email">
+
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:textSize="25dp"
+        android:fontFamily="@font/breeeeeeeeeeeee"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+
+        android:id="@+id/passwordtil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailTIL"
+        android:layout_marginTop="37dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword">
+
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <Button
+        android:fontFamily="@font/breeeeeeeeeeeee"
+
+        android:textColorHint="#fff"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/btiniciar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/passwordtil"
+        android:textColor="#FFFFFF"
+        android:hint="Iniciar Sesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Onclick hacia el Loginactivity -->
+
+    <TextView
+
+        android:id="@+id/recovery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NoTcuenta"
+        android:layout_marginTop="85dp"
+        android:text="¿Olvidaste tu Contraseña?"
+        android:textAlignment="center"
+        android:textColor="#0F0F0F" />
+
+    <TextView
+        android:id="@+id/NoTcuenta"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btiniciar"
+        android:layout_marginTop="15dp"
+        android:text="¿No tienes una Cuenta?"
+        android:textAlignment="center"
+        android:textColor="#F3E9E9" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googlebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/NoTcuenta"
+
+        />
+
+
+
+
+</RelativeLayout>
