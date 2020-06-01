@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/nav_paciente"
+        android:title="Agregar Paciente"
+        android:icon="@drawable/ic_addpaciente"/>
+
+    <item android:id="@+id/nav_perfil"
+        android:title="Perfil"
+        android:icon="@drawable/ic_profile"/>
+
+    <item
+
+        android:id="@+id/nav_usuarios"
+        android:title="Usuarios"
+        android:icon="@drawable/ic_users"/>
+    <item
+
+        android:id="@+id/nav_chat"
+        android:title="Chat"
+        android:icon="@drawable/ic_chat"/>
 
 
 

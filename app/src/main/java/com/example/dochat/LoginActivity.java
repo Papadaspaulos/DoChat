@@ -1,7 +1,6 @@
 package com.example.dochat;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -10,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +31,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     //Google Api
@@ -195,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             pd.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(LoginActivity.this,ProfileActivity.class));
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                             finish();
 
 
@@ -261,8 +263,35 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //capturar el emial y uid del usuario de desde auth
+
+                            String email = user.getEmail();
+                            String uid = user.getUid();
+                            //Capturar y guardar la informacion en la base de datos
+
+                            HashMap<Object , String> hashMap = new HashMap<>();
+                            //crear tabla con filas
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("apellido","");
+                            hashMap.put("image","");
+                            hashMap.put("rut","");
+                            hashMap.put("edad","");
+                            hashMap.put("Especialidad","");
+
+
+
+                            //firebase database nstance
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            //nombre de la base de datos
+                            DatabaseReference reference = database.getReference("PersonalMedico");
+                            //
+                            reference.child(uid).setValue(hashMap);
+
                             Toast.makeText(LoginActivity.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this,ProfileActivity.class));
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                             finish();
 
 

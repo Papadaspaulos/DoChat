@@ -1,7 +1,6 @@
 package com.example.dochat;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -20,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
@@ -89,10 +90,37 @@ public class RegistrarActivity extends AppCompatActivity {
                           //Usuario registrado
 
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //capturar el emial y uid del usuario de desde auth
+
+                            String email = user.getEmail();
+                            String uid = user.getUid();
+                            //Capturar y guardar la informacion en la base de datos
+
+                            HashMap<Object , String> hashMap = new HashMap<>();
+                            //crear tabla con filas
+                            hashMap.put("email",email);
+                            hashMap.put("uid",uid);
+                            hashMap.put("name","");
+                            hashMap.put("apellido","");
+                            hashMap.put("image","");
+                            hashMap.put("rut","");
+                            hashMap.put("edad","");
+                            hashMap.put("Especialidad","");
+
+
+
+                            //firebase database nstance
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            //nombre de la base de datos
+                            DatabaseReference reference = database.getReference("PersonalMedico");
+                            //
+                            reference.child(uid).setValue(hashMap);
+
                             Toast.makeText(RegistrarActivity.this, "Registrado con exito...\n"+user.getEmail(),
 
                                     Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegistrarActivity.this,ProfileActivity.class));
+                            startActivity(new Intent(RegistrarActivity.this, DashboardActivity.class));
                             finish();
 
 
