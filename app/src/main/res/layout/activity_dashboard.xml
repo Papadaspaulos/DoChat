@@ -22,9 +22,11 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/tab_color"
+        app:itemTextColor="@drawable/tab_color"
         android:layout_gravity="bottom"
         android:id="@+id/nav_view"
-        app:itemTextColor="#E91E63"
+
         android:background="?android:attr/windowBackground"
         app:menu="@menu/manu_nav"
 

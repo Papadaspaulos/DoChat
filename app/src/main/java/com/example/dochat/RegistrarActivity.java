@@ -104,6 +104,7 @@ public class RegistrarActivity extends AppCompatActivity {
                             hashMap.put("name","");
                             hashMap.put("apellido","");
                             hashMap.put("image","");
+                            hashMap.put("cover","");
                             hashMap.put("rut","");
                             hashMap.put("edad","");
                             hashMap.put("Especialidad","");

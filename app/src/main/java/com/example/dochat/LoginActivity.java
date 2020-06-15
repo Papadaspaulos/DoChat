@@ -264,31 +264,36 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            //capturar el emial y uid del usuario de desde auth
+                            if (task.getResult().getAdditionalUserInfo().isNewUser()){
+                                //capturar el emial y uid del usuario de desde auth
 
-                            String email = user.getEmail();
-                            String uid = user.getUid();
-                            //Capturar y guardar la informacion en la base de datos
+                                String email = user.getEmail();
+                                String uid = user.getUid();
+                                //Capturar y guardar la informacion en la base de datos
 
-                            HashMap<Object , String> hashMap = new HashMap<>();
-                            //crear tabla con filas
-                            hashMap.put("email",email);
-                            hashMap.put("uid",uid);
-                            hashMap.put("name","");
-                            hashMap.put("apellido","");
-                            hashMap.put("image","");
-                            hashMap.put("rut","");
-                            hashMap.put("edad","");
-                            hashMap.put("Especialidad","");
+                                HashMap<Object , String> hashMap = new HashMap<>();
+                                //crear tabla con filas
+                                hashMap.put("email",email);
+                                hashMap.put("uid",uid);
+                                hashMap.put("name","");
+                                hashMap.put("apellido","");
+                                hashMap.put("image","");
+                                hashMap.put("cover","");
+                                hashMap.put("rut","");
+                                hashMap.put("edad","");
+                                hashMap.put("Especialidad","");
 
 
 
-                            //firebase database nstance
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            //nombre de la base de datos
-                            DatabaseReference reference = database.getReference("PersonalMedico");
-                            //
-                            reference.child(uid).setValue(hashMap);
+                                //firebase database nstance
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                //nombre de la base de datos
+                                DatabaseReference reference = database.getReference("PersonalMedico");
+                                //
+                                reference.child(uid).setValue(hashMap);
+                            }
+
+
 
                             Toast.makeText(LoginActivity.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
